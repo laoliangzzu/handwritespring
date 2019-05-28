@@ -1,5 +1,6 @@
 package com.learning.annotation;
 
+import org.springframework.core.annotation.AliasFor;
 import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.Mapping;
 
@@ -18,5 +19,8 @@ import java.lang.annotation.Target;
 @Target({ElementType.TYPE,ElementType.METHOD})
 @Component
 public @interface MyRequestMapping {
-    String name();
+    String name() default "";
+
+    @AliasFor("path")
+    String[] value() default {};
 }

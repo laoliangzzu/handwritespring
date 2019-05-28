@@ -8,14 +8,14 @@ import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
 /**
- * 自定义Resource
+ * 自定义Service
  * @author bxd
  * @date 2019/5/28.
  */
-@Target({ElementType.FIELD})
-@Retention(RetentionPolicy.RUNTIME)
 @Component
-public @interface MyResource {
+@Retention(RetentionPolicy.RUNTIME)
+@Target(ElementType.TYPE)
+public @interface MyService {
 
-    String name() default "";
+    String value() default "";
 }
