@@ -7,6 +7,7 @@ import com.learning.service.IDemoService;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
 
 /**
  * @author bxd
@@ -20,8 +21,13 @@ public class DemoController {
     private IDemoService demoService;
 
     @MyRequestMapping("/getMessage")
-    public void getMessage(HttpServletRequest req, HttpServletResponse resp){
-        demoService.sayHello(req.getParameter("name"));
+    public void getMessage(HttpServletRequest req, HttpServletResponse resp,String name){
+      String retValue =  demoService.sayHello(name);
+        try {
+            resp.getWriter().write(retValue);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
 }

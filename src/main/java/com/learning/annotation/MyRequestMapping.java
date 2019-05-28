@@ -1,9 +1,5 @@
 package com.learning.annotation;
 
-import org.springframework.core.annotation.AliasFor;
-import org.springframework.stereotype.Component;
-import org.springframework.web.bind.annotation.Mapping;
-
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
@@ -15,12 +11,8 @@ import java.lang.annotation.Target;
  * @date 2019/5/27.
  */
 @Retention(RetentionPolicy.RUNTIME)
-@Mapping
 @Target({ElementType.TYPE,ElementType.METHOD})
-@Component
 public @interface MyRequestMapping {
-    String name() default "";
-
-    @AliasFor("path")
-    String[] value() default {};
+    String value() default "";
+   // String[] value() default {};
 }
